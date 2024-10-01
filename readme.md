@@ -7,11 +7,11 @@ install npm if not installed
 `npm install -g npm`
 
 next steps:
-  ```cd bootcamp```
-  ```Start up a database, if needed using './start-database.sh'```
-  `npm run db:push`
-  `npm run dev`
-  `git commit -m "initial commit"`
+- ```cd bootcamp```
+-  ```Start up a database, if needed using './start-database.sh'```
+-  `npm run db:push`
+-  `npm run dev`
+-  `git commit -m "initial commit"`
 
 make sure docker is installed
 
