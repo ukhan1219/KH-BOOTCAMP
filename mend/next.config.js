@@ -5,6 +5,10 @@
 await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
-const config = {};
+const config = {
+    env: {
+        GEMINI_API_KEY: process.env.GEMINI_API_KEY,
+    }
+};
 
 export default config;
