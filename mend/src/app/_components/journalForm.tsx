@@ -10,19 +10,33 @@ const JournalForm = () => {
     });
     const [response, setResponse] = useState('');
 
-    const mutation = api.gemini.getAdvice.useMutation({
-        onSuccess: (data) => {
-            setResponse(data.advice); // Assuming the API returns an `advice` property
-        },
-        onError: (error) => {
-            console.error("Error fetching advice:", error);
+    // const mutation = api.gemini.getAdvice.useMutation({
+    //     onSuccess: (data) => {
+    //         setResponse(data.advice); // Assuming the API returns an `advice` property
+    //     },
+    //     onError: (error) => {
+    //         console.error("Error fetching advice:", error);
+    //         setResponse("Sorry, something went wrong.");
+    //     }
+    // });
+
+    const getAdvice = api.gemini.getAdvice.useMutation();
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        // e.preventDefault();
+        // mutation.mutate(entry);
+        e.preventDefault();
+        try {
+            const aiResponse = await getAdvice.mutateAsync({
+                feelings: entry.feelings,
+                happened: entry.happened,
+                wished: entry.wished,
+            });
+            setResponse(aiResponse.text)
+        } catch (error) {
+            console.error("Error fetching AI advice:", error);
             setResponse("Sorry, something went wrong.");
         }
-    });
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        mutation.mutate(entry);
     };
 
     return (

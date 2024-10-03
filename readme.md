@@ -27,4 +27,4 @@ make sure docker is installed
 
 ### Misc:
 - primsa (edit database)
-- .env (environment variables such as api keys)
+- .env (environment variables such as api keys)n
