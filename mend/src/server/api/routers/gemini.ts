@@ -1,5 +1,5 @@
 // src/server/api/routers/gemini.ts
-import { string, z } from "zod";
+import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
