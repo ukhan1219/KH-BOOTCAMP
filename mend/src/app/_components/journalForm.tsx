@@ -10,21 +10,9 @@ const JournalForm = () => {
     });
     const [response, setResponse] = useState('');
 
-    // const mutation = api.gemini.getAdvice.useMutation({
-    //     onSuccess: (data) => {
-    //         setResponse(data.advice); // Assuming the API returns an `advice` property
-    //     },
-    //     onError: (error) => {
-    //         console.error("Error fetching advice:", error);
-    //         setResponse("Sorry, something went wrong.");
-    //     }
-    // });
-
     const getAdvice = api.gemini.getAdvice.useMutation();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        // e.preventDefault();
-        // mutation.mutate(entry);
         e.preventDefault();
         try {
             const aiResponse = await getAdvice.mutateAsync({
@@ -47,7 +35,7 @@ const JournalForm = () => {
                         type="text"
                         value={entry.feelings}
                         onChange={(e) => setEntry({ ...entry, feelings: e.target.value })}
-                        className="bg-gray-500 border border-gray-300 rounded-md p-2" // Change to your desired background color
+                        className="bg-gray-500 border border-gray-300 rounded-md p-2" 
                     />
                 </label>
                 <label>
@@ -55,7 +43,7 @@ const JournalForm = () => {
                     <textarea
                         value={entry.happened}
                         onChange={(e) => setEntry({ ...entry, happened: e.target.value })}
-                        className="bg-gray-500 border border-gray-300 rounded-md p-2" // Change to your desired background color
+                        className="bg-gray-500 border border-gray-300 rounded-md p-2"
                     />
                 </label>
                 <label>
@@ -63,7 +51,7 @@ const JournalForm = () => {
                     <textarea
                         value={entry.wished}
                         onChange={(e) => setEntry({ ...entry, wished: e.target.value })}
-                        className="bg-gray-500 border border-gray-300 rounded-md p-2" // Change to your desired background color
+                        className="bg-gray-500 border border-gray-300 rounded-md p-2" 
                     />
                 </label>
                 <button type="submit">Submit</button>
