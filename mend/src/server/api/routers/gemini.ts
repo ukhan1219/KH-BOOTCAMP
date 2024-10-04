@@ -11,12 +11,10 @@ const geminiRouter = createTRPCRouter({
   getAdvice: publicProcedure
     .input(z.object({
       feelings: z.string(),
-      happened: z.string(),
-      wished: z.string(),
     }))
     .mutation(async ({ input }) => {
       try {
-        const prompt = `Feelings: ${input.feelings}\nWhat happened: ${input.happened}\nWhat you wished happened: ${input.wished}`;
+        const prompt = `Here is my journal entry for today: ${input.feelings}, is there anything you can recommend I do or change to help me feel better? Keep the responses to 200 words maximum and do not use asterisks for formatting`;
         const result = await  model.generateContent(prompt);
         return {text:result.response.text()};
       } catch (error) {
